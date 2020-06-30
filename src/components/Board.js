@@ -3,28 +3,13 @@ import Square from './Square'
 
 export class Board extends Component {
   // Refactor
-  constructor(props) {
-    super(props)
-    this.state = {
-      squares: Array(9).fill(null),
-    };
-  }
-
-  /**
-   * *Refactor
-   */
-  handleClick = (i) => {
-    // Making a copy of squares Array
-    const squares = this.state.squares.slice();
-    // Updating the new squares array
-    squares[i] = 'X';
-
-    // Overriding the old array with the new one
-    this.setState({
-      squares: squares
-    })
-
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     squares: Array(9).fill(null),
+  //     xIsNext: true,
+  //   };
+  // }
 
   /*
   The DOM <button> element’s onClick attribute has a special meaning to React 
@@ -37,19 +22,16 @@ export class Board extends Component {
   renderSquare(i) {
     return (
       <Square 
-        value={this.state.squares[i]} 
-        onClick={() => this.handleClick(i)}
+        value={this.props.squares[i]} 
+        onClick={() => this.props.onClick(i)}
       />
     );
   }
   
   // Refactor
   render() {
-    const status = 'Next player: X';
-
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -71,3 +53,4 @@ export class Board extends Component {
 }
 
 export default Board
+
