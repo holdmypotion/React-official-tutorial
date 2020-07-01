@@ -23,7 +23,8 @@ export class Board extends Component {
     return (
       <Square 
         value={this.props.squares[i]} 
-        onClick={() => this.props.onClick(i)}
+        // onClick={() => this.props.onClick(i)}
+        onClick={this.props.onClick.bind(this, i)}
       />
     );
   }
